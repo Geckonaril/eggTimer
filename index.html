@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Yumurta Zamanlayıcı</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>eggimer</h1>
+        
+        <div class="pixel-art-sahne">
+            <div class="placeholder-yumurta">[BURAYA YUMURTA GELECEK]</div>
+        </div>
+
+        <div class="sayac" id="zamanGostergesi">00:00</div>
+
+        <div class="butonlar">
+            <button onclick="sureAyarla(3)">Rafadan</button>
+            <button onclick="sureAyarla(5)">Kayısı</button>
+            <button onclick="sureAyarla(10)">Katı</button>
+        </div>
+
+        <button class="baslat-btn" onclick="sayaciBaslat()">BAŞLAT</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

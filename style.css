@@ -1,0 +1,55 @@
+:root {
+    --arkaplan: #2d3436;
+    --yazi: #dfe6e9;
+    --ana-renk: #fdcb6e; /* Yumurta sarısı */
+    --buton-golge: #b7791f;
+}
+
+body {
+    background-color: var(--arkaplan);
+    color: var(--yazi);
+    font-family: 'Press Start 2P', cursive; /* Retro Font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+/* Pixel Art Resimlerin Keskin Görünmesi İçin */
+img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    width: 200px; /* Görsel boyutunu buradan ayarlayacağız */
+}
+
+.sayac {
+    font-size: 3rem;
+    margin: 20px 0;
+    color: var(--ana-renk);
+}
+
+button {
+    background-color: var(--ana-renk);
+    border: none;
+    border-bottom: 4px solid var(--buton-golge); /* 3D efekt */
+    font-family: 'Press Start 2P', cursive;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    color: #2d3436;
+    transition: all 0.1s;
+}
+
+button:active {
+    border-bottom: 0px;
+    transform: translateY(4px); /* Basılma hissi */
+}
+
+.placeholder-yumurta {
+    border: 2px dashed var(--ana-renk);
+    padding: 20px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
