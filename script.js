@@ -1,48 +1,47 @@
-let sayacArac; // Zamanlayıcıyı tutacak değişken
-let kalanSure = 0; // Saniye cinsinden
+let sayacArac; 
+let kalanSure = 0; 
 
 const sayacElementi = document.getElementById('zamanGostergesi');
+const yumurtaResmi = document.getElementById('yumurtaGorsel'); // Resim elementini seçtik
 
-// 1. Süreyi Ayarlayan Fonksiyon (Butonlara basınca çalışır)
+// Ses efekti için (İstersen ileride ses dosyası da ekleriz)
+// const alarmSesi = new Audio('assets/alarm.mp3');
+
 function sureAyarla(dakika) {
-    // Eğer hali hazırda çalışan bir sayaç varsa durdur
     clearInterval(sayacArac);
-    
-    // Dakikayı saniyeye çevir
-    kalanSure = dakika * 60;
-    
-    // Ekrana yazdır
+    kalanSure = dakika * 1;
     ekraniguncelle();
+    
+    // Süre seçildiğinde veya sıfırlandığında resim "Bekleme" moduna dönsün
+    yumurtaResmi.src = 'assets/egg.png';
 }
 
-// 2. Sayacı Başlatan Fonksiyon
 function sayaciBaslat() {
-    // Eğer zaten çalışıyorsa tekrar başlatma
     clearInterval(sayacArac);
 
     if (kalanSure > 0) {
+        // Başlata basınca "Pişme/Kaynama" animasyonu gelsin
+        yumurtaResmi.src = 'assets/tencere.gif';
+
         sayacArac = setInterval(() => {
             kalanSure--;
             ekraniguncelle();
 
-            // Süre bitti mi kontrol et
             if (kalanSure <= 0) {
                 clearInterval(sayacArac);
+                // Süre bitti! "Pişmiş/Hazır" resmi gelsin
+                yumurtaResmi.src = 'assets/egg2.png';
+                
                 alert("Yumurta Pişti! Afiyet olsun!"); 
-                // İleride buraya ses çalma kodu ekleyeceğiz
             }
-        }, 1000); // 1000 milisaniye = 1 saniye
+        }, 1000);
     }
 }
 
-// 3. Ekrana "05:00" formatında yazdıran yardımcı fonksiyon
 function ekraniguncelle() {
     const dakika = Math.floor(kalanSure / 60);
     const saniye = kalanSure % 60;
-
-    // Sayı 10'dan küçükse başına 0 ekle (9 -> 09)
     const formatliDakika = dakika < 10 ? '0' + dakika : dakika;
     const formatliSaniye = saniye < 10 ? '0' + saniye : saniye;
-
     sayacElementi.innerText = `${formatliDakika}:${formatliSaniye}`;
 }

@@ -1,55 +1,115 @@
+/* --- KONTROL PANELİ (DEĞİŞKENLER) --- */
 :root {
-    --arkaplan: #2d3436;
-    --yazi: #dfe6e9;
-    --ana-renk: #fdcb6e; /* Yumurta sarısı */
-    --buton-golge: #b7791f;
+    /* RENKLER */
+    --arkaplan-rengi: #202020;      /* Koyu Gri */
+    --kutu-arkaplan: #2d2d2d;       /* Biraz daha açık gri (Kart rengi) */
+    --ana-yazi-rengi: #ffffff;
+    --vurgu-rengi: #f1c40f;         /* Yumurta Sarısı */
+    
+    /* BUTON RENKLERİ */
+    --btn-sure-renk: #e67e22;       /* Turuncu */
+    --btn-baslat-renk: #27ae60;     /* Yeşil */
+    --btn-golge: rgba(0,0,0,0.5);   /* 3D efekti için gölge */
+
+    /* BOYUTLAR VE AYARLAR */
+    --yumurta-boyutu: 180px;        /* Yumurtayı buradan büyüt/küçült */
+    --sayac-font-boyutu: 4rem;      /* Saat yazısının büyüklüğü */
+    --genel-bosluk: 20px;           /* Elemanlar arası mesafe */
 }
 
+/* --- GENEL AYARLAR --- */
 body {
-    background-color: var(--arkaplan);
-    color: var(--yazi);
-    font-family: 'Press Start 2P', cursive; /* Retro Font */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    text-align: center;
-}
-
-/* Pixel Art Resimlerin Keskin Görünmesi İçin */
-img {
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    width: 200px; /* Görsel boyutunu buradan ayarlayacağız */
-}
-
-.sayac {
-    font-size: 3rem;
-    margin: 20px 0;
-    color: var(--ana-renk);
-}
-
-button {
-    background-color: var(--ana-renk);
-    border: none;
-    border-bottom: 4px solid var(--buton-golge); /* 3D efekt */
+    background-color: var(--arkaplan-rengi);
+    color: var(--ana-yazi-rengi);
     font-family: 'Press Start 2P', cursive;
-    padding: 10px 20px;
-    margin: 5px;
+    margin: 0;
+    height: 100vh; /* Tüm ekranı kapla */
+    display: flex;
+    justify-content: center; /* Yatayda ortala */
+    align-items: center;     /* Dikeyde ortala */
+}
+
+/* --- KART YAPISI (Tüm içeriği tutan kutu) --- */
+.container {
+    background-color: var(--kutu-arkaplan);
+    padding: 40px;
+    border-radius: 20px;
+    border: 4px solid var(--vurgu-rengi); /* Çerçeve */
+    box-shadow: 10px 10px 0px #000000;    /* Retro Gölge Efekti */
+    
+    display: flex;
+    flex-direction: column; /* Her şeyi alt alta diz! */
+    align-items: center;    /* İçindekileri ortala */
+    gap: var(--genel-bosluk); /* Her eleman arasına boşluk koy */
+}
+
+/* --- BAŞLIK --- */
+.baslik {
+    font-size: 2rem;
+    color: var(--vurgu-rengi);
+    text-shadow: 2px 2px 0px #000;
+    margin-bottom: 10px;
+}
+
+/* --- RESİM AYARLARI --- */
+img {
+    width: var(--yumurta-boyutu);
+    height: var(--yumurta-boyutu);
+    image-rendering: pixelated; /* Pikseller net görünsün */
+    object-fit: contain;
+    
+    /* Resim değişirken zıplama olmasın diye sabit alan */
+    border-bottom: 4px solid rgba(255,255,255,0.1); 
+    padding-bottom: 20px;
+}
+
+/* --- SAYAÇ --- */
+.sayac {
+    font-size: var(--sayac-font-boyutu);
+    color: var(--ana-yazi-rengi);
+    text-shadow: 4px 4px 0px #000;
+    letter-spacing: 5px; /* Rakamların arasını aç */
+}
+
+/* --- BUTONLAR --- */
+button {
+    font-family: 'Press Start 2P', cursive;
+    border: none;
+    padding: 15px 20px;
     cursor: pointer;
-    color: #2d3436;
-    transition: all 0.1s;
+    color: white;
+    font-size: 0.8rem;
+    position: relative;
+    top: 0;
+    transition: top 0.1s; /* Basma efekti için animasyon */
+    
+    /* Pixel Art Buton Görünümü */
+    box-shadow: 0px 6px 0px var(--btn-golge);
+    border-radius: 8px;
 }
 
+/* Süre Butonları */
+.sure-btn {
+    background-color: var(--btn-sure-renk);
+    margin: 0 5px; /* Yan yana butonlar arası boşluk */
+}
+
+/* Başlat Butonu (Daha büyük ve farklı renk) */
+.baslat-btn {
+    background-color: var(--btn-baslat-renk);
+    font-size: 1rem;
+    padding: 15px 40px;
+    width: 100%; /* Kendi satırını kaplasın */
+}
+
+/* Tıklama Efekti (Buton aşağı çöker) */
 button:active {
-    border-bottom: 0px;
-    transform: translateY(4px); /* Basılma hissi */
+    top: 6px;
+    box-shadow: 0px 0px 0px var(--btn-golge);
 }
 
-.placeholder-yumurta {
-    border: 2px dashed var(--ana-renk);
-    padding: 20px;
-    margin-bottom: 20px;
-    opacity: 0.5;
+/* Buton Gruplama Alanı */
+.buton-grubu {
+    display: flex;
+    gap: 10px;
 }

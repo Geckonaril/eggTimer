@@ -10,23 +10,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>eggTimer</h1>
+        <h1 class="baslik">eggTimer</h1>
         
         <div class="pixel-art-sahne">
-            <div class="placeholder-yumurta">[BURAYA YUMURTA GELECEK]</div>
+            <img id="yumurtaGorsel" src="assets/egg.png" alt="Pixel Yumurta">
         </div>
 
         <div class="sayac" id="zamanGostergesi">00:00</div>
 
-        <div class="butonlar">
-            <button onclick="sureAyarla(3)">rare</button>
-            <button onclick="sureAyarla(5)">medium rare</button>
-            <button onclick="sureAyarla(10)">overcooked</button>
+        <div class="buton-grubu">
+            <button class="sure-btn" onclick="sureAyarla(3)">Rare</button>
+            <button class="sure-btn" onclick="sureAyarla(5)">Middle Rare</button>
+            <button class="sure-btn" onclick="sureAyarla(10)">Overcooked</button>
         </div>
 
-        <button class="baslat-btn" onclick="sayaciBaslat()">start</button>
+        <div class="aksiyon-alani">
+            <button class="baslat-btn" onclick="sayaciBaslat()">Start!</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
